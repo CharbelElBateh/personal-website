@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T23:30:00+00:00",
+  "title": "Design System: Charbel AL Bateh",
+  "extensions": {
+    "colorMeta": {
+      "gold": { "role": "primary", "displayName": "Laurel Gold", "canonical": "#c9a96e", "tonalRamp": ["#2a2010", "#47391f", "#66532f", "#876f42", "#a98c57", "#c9a96e", "#dcc597", "#efe2c4"] },
+      "gold-burnished": { "role": "primary", "displayName": "Burnished Gold", "canonical": "#b3925a", "tonalRamp": ["#241a0c", "#3e3019", "#5a4728", "#775f39", "#95784a", "#b3925a", "#cdb185", "#e7d6b6"] },
+      "cream": { "role": "neutral", "displayName": "Bone Cream", "canonical": "#e8e2d1", "tonalRamp": ["#1f1d18", "#3a372f", "#57534a", "#767165", "#969083", "#b7b1a2", "#d4cebe", "#f3efe4"] },
+      "cream-dim": { "role": "neutral", "displayName": "Weathered Cream", "canonical": "#9e9887", "tonalRamp": ["#1f1d18", "#3a372f", "#57534a", "#767165", "#9e9887", "#b7b1a2", "#d4cebe", "#f3efe4"] },
+      "cream-muted": { "role": "neutral", "displayName": "Dust Cream", "canonical": "#8c8676", "tonalRamp": ["#1f1d18", "#3a372f", "#57534a", "#8c8676", "#969083", "#b7b1a2", "#d4cebe", "#f3efe4"] },
+      "true-black": { "role": "neutral", "displayName": "True Black", "canonical": "#000000", "tonalRamp": ["#000000", "#050506", "#0a0a0c", "#111114", "#1c1c20", "#2a2a2f", "#3d3d43", "#55555c"] },
+      "night": { "role": "neutral", "displayName": "Night", "canonical": "#050506", "tonalRamp": ["#000000", "#050506", "#0a0a0c", "#111114", "#1c1c20", "#2a2a2f", "#3d3d43", "#55555c"] },
+      "obsidian": { "role": "neutral", "displayName": "Obsidian", "canonical": "#0a0a0c", "tonalRamp": ["#000000", "#050506", "#0a0a0c", "#111114", "#1c1c20", "#2a2a2f", "#3d3d43", "#55555c"] },
+      "raised-ink": { "role": "neutral", "displayName": "Raised Ink", "canonical": "#111114", "tonalRamp": ["#000000", "#050506", "#0a0a0c", "#111114", "#1c1c20", "#2a2a2f", "#3d3d43", "#55555c"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(232, 226, 209, 0.12)" },
+      "hairline-ink": { "role": "neutral", "displayName": "Hairline Ink", "canonical": "rgba(232, 226, 209, 0.14)" },
+      "hairline-strong": { "role": "neutral", "displayName": "Hairline Strong", "canonical": "rgba(232, 226, 209, 0.28)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The giant name on the home stage; the pinned statement and footer call to action share this voice at stage scale." },
+      "headline": { "displayName": "Headline", "purpose": "Inner page titles and section titles, revealed line by line." },
+      "statement": { "displayName": "Statement", "purpose": "The one-line role at the top of home." },
+      "lede": { "displayName": "Lede", "purpose": "Opening paragraph of a section, in the serif, with gold italic emphasis." },
+      "title": { "displayName": "Title", "purpose": "Listing rows, work cards, modal, door and curiosity titles." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs, capped at 60 to 62ch." },
+      "label": { "displayName": "Label", "purpose": "Gold uppercase mono for registration captions under stages and side labels." },
+      "label-sans": { "displayName": "Label Sans", "purpose": "Uppercase sans for field labels, keys, modal subheads and footer column heads." },
+      "button": { "displayName": "Button", "purpose": "Every pill." },
+      "data": { "displayName": "Data", "purpose": "Dates and modal meta." }
+    },
+    "shadows": [
+      { "name": "hairline-ring", "value": "inset 0 0 0 1px rgba(232, 226, 209, 0.12)", "purpose": "Edge of cards, portrait well and quiet surfaces." },
+      { "name": "hairline-ring-strong", "value": "inset 0 0 0 1px rgba(232, 226, 209, 0.28)", "purpose": "Ghost pill, chips, outline round buttons, contact letter." },
+      { "name": "floating-menu", "value": "0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(232, 226, 209, 0.28)", "purpose": "Menu panel." },
+      { "name": "floating-modal", "value": "0 40px 100px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(232, 226, 209, 0.28)", "purpose": "Detail modal." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Default easing for reveals, hovers, menu and modal." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Preloader clip wipe." },
+      { "name": "ui-fast", "value": "160-200ms", "purpose": "Press scale, colour and background changes." },
+      { "name": "ui-open", "value": "280-300ms", "purpose": "Menu and modal open; page crossfade (view transition 280ms)." },
+      { "name": "row-wipe", "value": "380ms", "purpose": "Listing-row panel wipe and title slide." },
+      { "name": "reveal", "value": "700-1000ms", "purpose": "Fade-up reveals (28px), staggers at 60ms steps, masked line reveals." },
+      { "name": "preloader-wipe", "value": "900ms", "purpose": "Preloader sheet clipped upward." },
+      { "name": "smooth-scroll", "value": "Lenis lerp 0.085, wheelMultiplier 0.95", "purpose": "Inertial scrolling; off under reduced motion." },
+      { "name": "home-sequence", "value": "360vh pinned; open 0-0.32, dolly 0.22-0.78, explode 0.3-0.8, words 0.42-0.8", "purpose": "Stage opens to full bleed, camera falls into the cluster, statement assembles out of an 8px blur." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "560px" },
+      { "name": "marks", "value": "720px" },
+      { "name": "md", "value": "820px" },
+      { "name": "curio", "value": "900px" },
+      { "name": "lg", "value": "1100px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Gold Pill",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The primary action of a view: gold capsule, black tracked uppercase text, cream on hover.",
+      "html": "<a class=\"ds-pill ds-pill-gold\" href=\"#\">Get in touch <span class=\"ds-dot\"></span></a>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 20px; border-radius: 999px; font-family: var(--f-body, Inter, system-ui, sans-serif); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background-color 200ms ease, color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-pill:active { transform: scale(0.97); } .ds-pill-gold { background: var(--accent, #c9a96e); color: #000; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14); } .ds-pill-gold:hover { background: var(--fg, #e8e2d1); color: #000; } .ds-pill:focus-visible { outline: 2px solid var(--accent, #c9a96e); outline-offset: 3px; } .ds-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-pill:hover .ds-dot { transform: scale(1.6); }"
+    },
+    {
+      "name": "Ghost Pill",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary actions and the menu trigger: blurred black capsule with a strong hairline ring.",
+      "html": "<button class=\"ds-pill-ghost\" type=\"button\">Menu</button>",
+      "css": ".ds-pill-ghost { display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border: 0; border-radius: 999px; cursor: pointer; background: rgba(0, 0, 0, 0.6); color: var(--fg, #e8e2d1); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: inset 0 0 0 1px var(--line-strong, rgba(232, 226, 209, 0.28)); font-family: var(--f-body, Inter, system-ui, sans-serif); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; transition: background-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-pill-ghost:hover { background: rgba(232, 226, 209, 0.08); } .ds-pill-ghost:active { transform: scale(0.97); } .ds-pill-ghost:focus-visible { outline: 2px solid var(--accent, #c9a96e); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Contact form field: black well, quiet hairline, gold border on focus, uppercase sans label.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-f\">Your name</label><input class=\"ds-input\" id=\"ds-f\" type=\"text\"></div>",
+      "css": ".ds-field { padding: 22px; background: var(--card, #0a0a0c); } .ds-field-label { display: block; margin-bottom: 8px; font-family: var(--f-body, Inter, system-ui, sans-serif); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-muted, #8c8676); } .ds-input { width: 100%; font: 17px/1.55 var(--f-body, Inter, system-ui, sans-serif); color: var(--fg, #e8e2d1); background: #000; border: 1px solid var(--line, rgba(232, 226, 209, 0.12)); border-radius: 2px; padding: 14px 16px; caret-color: var(--accent, #c9a96e); transition: border-color 180ms ease, background-color 180ms ease; } .ds-input:focus { outline: none; border-color: var(--accent, #c9a96e); background: #050506; }"
+    },
+    {
+      "name": "Menu",
+      "kind": "nav",
+      "refersTo": "menu",
+      "description": "Obsidian panel of serif page names, each led by a gold italic Greek ordinal; current page in gold.",
+      "html": "<nav class=\"ds-menu\"><ul><li><a href=\"#\"><span class=\"ds-greek\">Α</span>Home</a></li><li><a href=\"#\" aria-current=\"page\"><span class=\"ds-greek\">Β</span>About</a></li><li><a href=\"#\"><span class=\"ds-greek\">Γ</span>Work</a></li></ul><div class=\"ds-menu-foot\"><a href=\"#\">hello@charbel.dev</a><span>Beirut</span></div></nav>",
+      "css": ".ds-menu { width: min(440px, 100%); padding: 14px; background: #0a0a0c; color: var(--fg, #e8e2d1); border-radius: 2px; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--line-strong, rgba(232, 226, 209, 0.28)); } .ds-menu ul { list-style: none; margin: 0; padding: 0; } .ds-menu li a { display: flex; align-items: center; gap: 16px; padding: 12px 14px; color: inherit; text-decoration: none; font-family: var(--f-display, 'Cormorant Garamond', Georgia, serif); font-weight: 400; font-size: 2.1rem; line-height: 1.05; letter-spacing: -0.01em; transition: background-color 180ms ease, color 180ms ease; } .ds-menu li a:hover { background: rgba(232, 226, 209, 0.05); } .ds-menu li a:focus-visible { outline: 2px solid var(--accent, #c9a96e); outline-offset: -2px; } .ds-menu li a[aria-current='page'] { color: var(--accent, #c9a96e); } .ds-greek { width: 1.2em; font-style: italic; font-size: 0.8em; color: var(--accent, #c9a96e); } .ds-menu-foot { display: flex; justify-content: space-between; gap: 12px; padding: 16px 14px 6px; margin-top: 8px; border-top: 1px solid var(--line, rgba(232, 226, 209, 0.12)); color: var(--fg-muted, #8c8676); font-family: var(--f-body, Inter, system-ui, sans-serif); font-size: 0.86rem; } .ds-menu-foot a { color: inherit; text-decoration: none; } .ds-menu-foot a:hover { color: var(--accent, #c9a96e); }"
+    },
+    {
+      "name": "Media Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Category capsule over work-card media.",
+      "html": "<span class=\"ds-chip\">Publishing</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; background: rgba(0, 0, 0, 0.75); color: var(--fg, #e8e2d1); box-shadow: inset 0 0 0 1px var(--line-strong, rgba(232, 226, 209, 0.28)); font-family: var(--f-body, Inter, system-ui, sans-serif); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Door Card",
+      "kind": "card",
+      "refersTo": "card-door",
+      "description": "Link card to another section: obsidian, hairline ring, serif title; burnished-gold ring and gold button on hover.",
+      "html": "<a class=\"ds-door\" href=\"#\"><div><h2>Publishings</h2><p>Papers, drafts, and informal notes.</p></div><span class=\"ds-go\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 14L14 4M6 4h8v8\"/></svg></span></a>",
+      "css": ".ds-door { display: flex; flex-direction: column; justify-content: space-between; min-height: 240px; max-width: 280px; padding: 22px; border-radius: 2px; background: #0a0a0c; color: var(--fg, #e8e2d1); text-decoration: none; box-shadow: inset 0 0 0 1px var(--line, rgba(232, 226, 209, 0.12)); transition: background-color 260ms ease, box-shadow 260ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-door h2 { margin: 0; font-family: var(--f-display, 'Cormorant Garamond', Georgia, serif); font-weight: 400; font-size: 1.9rem; line-height: 1; letter-spacing: -0.035em; } .ds-door p { margin: 10px 0 0; color: var(--fg-dim, #9e9887); font-family: var(--f-body, Inter, system-ui, sans-serif); font-size: 0.95rem; } .ds-go { align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--fg, #e8e2d1); box-shadow: inset 0 0 0 1px var(--line-strong, rgba(232, 226, 209, 0.28)); transition: background-color 200ms ease, transform 300ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-door:hover { background: #111114; box-shadow: inset 0 0 0 1px var(--accent-ink, #b3925a); } .ds-door:hover .ds-go { background: var(--accent, #c9a96e); color: #000; box-shadow: none; transform: rotate(-45deg); } .ds-door:active { transform: scale(0.985); } .ds-door:focus-visible { outline: 2px solid var(--accent, #c9a96e); outline-offset: 3px; }"
+    },
+    {
+      "name": "Listing Row",
+      "kind": "custom",
+      "refersTo": "listing-row",
+      "description": "Work/Publishings/Projects row: raised-ink panel wipes up on hover, title slides, chevron fills gold.",
+      "html": "<button class=\"ds-row\"><span class=\"ds-row-title\">On calibrated deferral in LLM agents</span><span class=\"ds-row-meta\">Conference draft</span><span class=\"ds-row-date\">2026</span><span class=\"ds-chev\"><svg width=\"16\" height=\"10\" viewBox=\"0 0 16 10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"><path d=\"M1 5h14M11 1l4 4-4 4\"/></svg></span></button>",
+      "css": ".ds-row { position: relative; isolation: isolate; width: 100%; display: grid; grid-template-columns: 1.6fr 1fr 80px 48px; gap: 24px; align-items: center; padding: 28px 0; border: 0; border-top: 1px solid var(--line-strong, rgba(232, 226, 209, 0.28)); border-bottom: 1px solid var(--line-strong, rgba(232, 226, 209, 0.28)); background: none; color: var(--fg, #e8e2d1); text-align: left; cursor: pointer; } .ds-row::before { content: ''; position: absolute; inset: 0; z-index: -1; background: #111114; transform: scaleY(0); transform-origin: bottom; transition: transform 380ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-row-title { font-family: var(--f-display, 'Cormorant Garamond', Georgia, serif); font-weight: 400; font-size: 2rem; line-height: 1.02; letter-spacing: -0.01em; transition: transform 380ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-row-meta { color: var(--fg-dim, #9e9887); font-family: var(--f-body, Inter, system-ui, sans-serif); } .ds-row-date { font-family: var(--f-mono, 'JetBrains Mono', monospace); font-size: 0.8rem; color: var(--fg-muted, #8c8676); } .ds-chev { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1px var(--line-strong, rgba(232, 226, 209, 0.28)); transition: background-color 200ms ease, color 200ms ease, transform 300ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-row:hover::before { transform: scaleY(1); } .ds-row:hover .ds-row-title { transform: translateX(16px); } .ds-row:hover .ds-chev { background: var(--accent, #c9a96e); color: #000; box-shadow: none; transform: rotate(-45deg); } .ds-row:focus-visible { outline: 2px solid var(--accent, #c9a96e); outline-offset: 3px; }"
+    },
+    {
+      "name": "Stage Plate",
+      "kind": "custom",
+      "refersTo": "stage",
+      "description": "The framed 3D window: dark radial well, strong hairline, four gold corner brackets, gold '+' registration row with one mono caption.",
+      "html": "<div><div class=\"ds-stage\"></div><div class=\"ds-marks\"><svg viewBox=\"0 0 13 13\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M6.5 0v13M0 6.5h13\"/></svg><span class=\"ds-caption\">Scroll to explore</span><svg viewBox=\"0 0 13 13\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M6.5 0v13M0 6.5h13\"/></svg></div></div>",
+      "css": ".ds-stage { position: relative; height: 260px; border-radius: 2px; overflow: hidden; background: radial-gradient(90% 80% at 50% 35%, #12110e 0%, #050505 62%, #000 100%); } .ds-stage::before { content: ''; position: absolute; inset: 0; pointer-events: none; border: 1px solid var(--line-strong, rgba(232, 226, 209, 0.28)); background: linear-gradient(#c9a96e, #c9a96e) top left / 20px 1px no-repeat, linear-gradient(#c9a96e, #c9a96e) top left / 1px 20px no-repeat, linear-gradient(#c9a96e, #c9a96e) top right / 20px 1px no-repeat, linear-gradient(#c9a96e, #c9a96e) top right / 1px 20px no-repeat, linear-gradient(#c9a96e, #c9a96e) bottom left / 20px 1px no-repeat, linear-gradient(#c9a96e, #c9a96e) bottom left / 1px 20px no-repeat, linear-gradient(#c9a96e, #c9a96e) bottom right / 20px 1px no-repeat, linear-gradient(#c9a96e, #c9a96e) bottom right / 1px 20px no-repeat; } .ds-marks { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: var(--accent, #c9a96e); } .ds-marks svg { width: 13px; height: 13px; } .ds-caption { font-family: var(--f-mono, 'JetBrains Mono', monospace); font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent, #c9a96e); }"
+    },
+    {
+      "name": "Meander Band",
+      "kind": "custom",
+      "refersTo": "meander",
+      "description": "Gold Greek-key band across the top edge of the lifted home section and the footer.",
+      "html": "<div class=\"ds-meander\"></div>",
+      "css": ".ds-meander { position: relative; height: 80px; background: #050506; border-top: 1px solid var(--line, rgba(232, 226, 209, 0.12)); } .ds-meander::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 14px; background-image: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'><path d='M0 13h10V5h8v4h-4v4h14V1h-8v4h4V1H0z' fill='none' stroke='%23c9a96e' stroke-width='0.7' stroke-opacity='0.55'/></svg>\"); background-repeat: repeat-x; background-size: 48px 14px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Gilded Reliquary",
+    "overview": "A true-black room in which a cluster of classical fragments hangs lit: fluted column drums, capitals, Greek-key tiles, tesserae, orbs and laurel rings in veined marble, gold metal, obsidian and night-stone, inside a faint gold star field. The visitor pushes it with the cursor and, on the home page, scrolls into it. Everything around the stage is quiet: cream type on black, hairline rules, one gold used for emphasis, labels and the single primary action.\n\nThe page is dark and spacious, with large Cormorant display set tight and quiet Inter text between. Ornament is linear and gold, never filled: hairline frames with gold corner brackets, small gold \"+\" registration marks, Greek-key meander bands that open the lifted section and the footer, Greek capital ordinals in the menu. The 3D carries all of the colour and volume; the flat interface stays at hairline weight so the stage is the only lit object.\n\nMotion is slow and inertial: Lenis smooth scrolling, lines that rise out of a mask, a gold italic counter on first arrival, and a pinned home sequence where the framed stage opens to full bleed, the camera falls into the cluster and the statement assembles word by word out of a blur. Reduced motion removes the smoothing, the pinning and the preloader and leaves a static stacked page.",
+    "keyCharacteristics": [
+      "True black page, cream text, one gold; no second hue anywhere in the interface.",
+      "Cormorant Garamond display with gold italic emphasis; Inter for reading; JetBrains Mono for gold registration labels.",
+      "Sharp 2px rectangles framed by hairlines; full round only for pills, chips and circular action buttons.",
+      "Gold linework ornament: corner brackets, \"+\" marks, meander bands, Greek ordinals.",
+      "One lit physical 3D stage per page, with per-page presets of form and stone."
+    ],
+    "rules": [
+      { "name": "The One Gold Rule", "body": "Gold is the only chromatic colour in the interface. Nothing else is tinted; cream, black and gold make every surface.", "section": "colors" },
+      { "name": "The Gold Emphasis Rule", "body": "Emphasis in a Cormorant line is a gold italic `em`, one phrase at most per line. Bold is never the emphasis device in display type.", "section": "colors" },
+      { "name": "The Four Blacks Rule", "body": "Depth on the page comes from four blacks (true black, night, obsidian, raised ink) and cream hairlines. Do not add lighter greys to separate surfaces.", "section": "colors" },
+      { "name": "The Serif Speaks Rule", "body": "Anything that is a voice (name, statements, titles, ledes, values, quotes) is Cormorant at 400. Anything that is an instrument (buttons, labels, keys, dates) is Inter or mono, small and tracked.", "section": "typography" },
+      { "name": "The Tight Display Rule", "body": "Display sizes run line-height 0.82 to 0.95 with negative tracking (-0.01em to -0.03em). Loose display leading breaks the carved look.", "section": "typography" },
+      { "name": "The Ring Not Shadow Rule", "body": "A surface is separated by a 1px cream ring and one step of black, not by shadow. A drop shadow appears only under the two floating layers, and always with its ring.", "section": "elevation" },
+      { "name": "The Lit Stage Rule", "body": "Gradients, sheen and light belong to the 3D stage. Flat interface surfaces stay matte.", "section": "elevation" },
+      { "name": "The Plate Rule", "body": "A 3D stage is always framed: strong hairline, four gold corner brackets, and a \"+\" registration row beneath it.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep gold as the only accent, and spend it on emphasis, labels, ornament and the single primary action of a view.",
+      "Do set emphasis inside Cormorant lines as gold italic, one phrase per line.",
+      "Do frame every 3D stage with the strong hairline, four 20px gold corner brackets and a \"+\" registration row with one mono caption.",
+      "Do separate surfaces with the four blacks and 1px cream rings (12% quiet, 28% strong).",
+      "Do keep rectangles at 2px corners and capsules fully round.",
+      "Do draw ornament as thin gold linework: meander bands, \"+\" marks, brackets, curiosity line drawings.",
+      "Do keep the reduced-motion path complete: no smooth scroll, no pinning, no preloader, reveals as plain fades."
+    ],
+    "donts": [
+      "Don't introduce a second hue, a coloured gradient or a lighter grey surface into the interface.",
+      "Don't set display type in bold or with loose leading; the serif stays at 400 and tight.",
+      "Don't round rectangular surfaces beyond 2px; the only round forms are pills, chips, tags and circular buttons.",
+      "Don't fill ornament or render it in cream; meanders, brackets and marks are gold strokes.",
+      "Don't stack a mono label above a page title as an eyebrow; the mono voice belongs to registration captions and side labels, and Greek ordinals belong to the menu.",
+      "Don't use a drop shadow as the only edge of a surface; any shadow travels with its hairline ring."
+    ]
+  }
+}
