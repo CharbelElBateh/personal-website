@@ -1,0 +1,13 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Listing from "../components/Listing.astro";
+import ListingModals from "../components/ListingModals.astro";
+import { projects } from "../lib/content";
+// Edit content/projects.yaml
+---
+<Base title={projects.title} description={projects.description} pageKey="projects" listing>
+  <PageHero pageKey="projects" hero={projects.hero} />
+  <Listing items={projects.items} />
+  <ListingModals slot="after" items={projects.items} />
+</Base>

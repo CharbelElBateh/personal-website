@@ -31,16 +31,22 @@ Future work must not lock in either framing until the user decides.
 
 ## Operating Context
 
-- Static multi-page site: `index.html`, `about.html`, `work.html`, `publishings.html`, `projects.html`, `curiosities.html` ("Look at this"), `contact.html`.
-- Shared chrome and listings come from `assets/partials.js`, `assets/shared.js`, and `assets/data.js` (arrays `WORK`, `PUBS`, `PROJECTS`). Each page renders its rows plus a detail modal from these arrays.
-- `assets/stage.js` (mounted by `assets/boot.js`) draws each page's 3D stage. `assets/scroll.js` handles smooth scrolling, the preloader and the pinned home sequence.
+- Astro static site (`npm run build` → `dist/`), with the same addresses as before: `index.html`, `about.html`, `work.html`, `publishings.html`, `projects.html`, `curiosities.html` ("Look at this"), `contact.html`.
+- **All words live in `content/`** (one YAML file per page, plus `site.yaml` for the person, links and page switches, and `publications.bib` for papers). `src/lib/content.ts` validates them at build time and fails with the file and field at fault. See `content/README.md`.
+- Templates are in `src/pages/` and `src/components/` (Curiosities card kinds in `src/components/curio/`). Header, footer, listings and modals are rendered at build time.
+- SEO and plumbing: per-page titles and descriptions (checked unique at build), Open Graph, JSON-LD (Person, ProfilePage, ScholarlyArticle list, BreadcrumbList), `robots.txt`, `site.webmanifest`, favicon set, `og.png` (`npm run og`). Canonical links and `sitemap.xml` switch on once `url` is set in `content/site.yaml` (no domain yet).
+- Contact: Web3Forms once `web3formsKey` is set (redirects to `thanks.html`), the visitor's email app until then; honeypot field plus a 3-second minimum as spam traps.
+- No third-party requests: fonts (`@fontsource`), three.js and Lenis are self-hosted (`public/vendor/` is copied from `node_modules` at build), and there are no cookies, so no consent banner is required.
+- `npm run check:links` verifies every internal link, file and anchor in `dist/`.
+- Browser scripts are in `public/assets/`: `stage.js` (mounted by `boot.js`) draws each page's 3D stage; `scroll.js` handles smooth scrolling, the preloader and the pinned home sequence; `shared.js` holds reveals, modals, the menu and the custom scrollbar; `listing.js` wires rows, copy buttons and deep links. Script and style URLs carry a per-build `?v=` automatically.
 
 ## Capabilities and Constraints
 
 - Pages: home, about, work history, publications, projects, curiosities, and contact.
 - Work, Publishings, and Projects are data-driven listings that open a detail modal.
-- **The contact form is not wired up.** The submit handler only fakes a "dispatched" state with `setTimeout`, and no submission backend has been chosen.
-- The CV download on About serves `CV.pdf` from the repo root.
+- **The contact form has no backend.** It validates each field, then opens the visitor's email app with the letter pre-filled (`mailto:`). The page says so. A hosted form service can replace this once hosting is chosen.
+- The CV (`CV.pdf`, repo root) downloads from About, the menu and the footer.
+- Every Work, Publication and Project item has a deep link (`page.html#id`) that opens its modal.
 - Undecided: positioning (see above), the form backend, and the hosting/deploy target.
 
 ## Evidence on Hand
@@ -49,11 +55,11 @@ Future work must not lock in either framing until the user decides.
 
 - name spelling "Charbel Al Bateh"; email charbelelbateh@gmail.com; GitHub CharbelElBateh; LinkedIn charbel-al-bateh;
 - education: BE Computer Engineering, Lebanese American University (2021 to present), minor in Mathematics;
-- the full Work history in `assets/data.js` (INMIND.AI, LAU, MERAKI, BMW Group, Invigo, Galactech.io);
-- Publications: two arXiv preprints (quantum state preparation; MIRA-Math) and two submissions in preparation (KV caching; PINNs for electronics);
-- About bio, tools, "Currently", "Studying" and "Community" facts; the home "Recently" work and publication cards; the "4 papers & drafts" figure.
+- the full Work history in `content/work.yaml` (INMIND.AI, LAU, MERAKI, BMW Group, Invigo, Galactech.io);
+- Publications: two arXiv preprints, with authors, year and abstract taken from the arXiv records (quantum state preparation, arXiv 2605.31006; MIRA-Math, arXiv 2607.07391), and two submissions in preparation (KV caching; PINNs for electronics);
+- About bio, tools, "Currently", "Studying" and "Community" facts; the home "Recently" cards (one role, two papers); the home figures (2 arXiv preprints, 2 papers in preparation, 3 fields: AI, quantum, hardware).
 
-**Still placeholder (the owner will decide):** every Project in `assets/data.js` and the home project card; the "6+ years" and "3 domains" figures; the city (Beirut) and availability line; Google Scholar; the reading list; the portrait; the "Look at this" page; the home and About voice paragraphs. Never invent facts to fill these.
+**Still placeholder (the owner will decide):** every Project in `content/projects.yaml` (the Projects page only; no longer featured on home); the city (Beirut) and the undated availability line; Google Scholar (shown as "link coming", not linked); the reading list; the portrait (`portrait: null` in `content/about.yaml`); the "Look at this" page; the home and About voice paragraphs. Never invent facts to fill these.
 
 ## Product Principles
 

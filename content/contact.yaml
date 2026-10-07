@@ -1,0 +1,30 @@
+# Contact page. Markup: *gold italic*  **bold**  [link](page.html)
+
+title: Contact — Charbel Al Bateh
+description: Write to Charbel Al Bateh about work, research, or collaborations.
+
+hero:
+  eyebrow: Contact
+  title: ["Write a *letter*,", "I'll write back."]
+  sub: For work, research, or just to disagree with something I wrote. The form opens your email app with the letter ready to send, or write to the address beside it directly.
+  caption: Direct lines
+  stage: { preset: contact, seed: 19 }
+
+# The email row and the "Elsewhere" links come from site.yaml.
+lines:
+  - { k: Based in,     v: "Beirut, Lebanon" }
+  - { k: Availability, v: Selective collaborations }
+
+quote:
+  show: true
+  text: "“A letter carries the cadence of the hand that wrote it.”"
+  aside: Every good engineer eventually believes this.
+
+# The letter form. With web3formsKey set in site.yaml it sends directly and shows thanks.html;
+# without it, it opens the visitor's email app addressed to person.email.
+form:
+  show: true
+  button: Open in my email app        # label while there's no Web3Forms key
+  sendButton: Send the letter         # label once the form sends by itself
+  hint: Every field is needed.
+  privacy: Sent through Web3Forms, a form service that forwards it to my inbox.

@@ -1,0 +1,36 @@
+---
+import Marks from "./Marks.astro";
+import { page, md, absolute } from "../lib/content";
+
+interface Props {
+  pageKey: string;
+  hero: { eyebrow: string; title: string[]; sub: string; caption: string; stage: { preset: string; seed: number } };
+}
+const { pageKey, hero } = Astro.props;
+const current = page(pageKey);
+const greek = current?.greek;
+const home = page("home");
+// Breadcrumb trail for search engines (needs absolute addresses, so only once site.url is set)
+const crumbLd = current && home && absolute(home.href) ? JSON.stringify({
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: home.label, item: absolute(home.href) },
+    { "@type": "ListItem", position: 2, name: current.label, item: absolute(current.href) },
+  ],
+}) : null;
+---
+<section class="page-hero wrap">
+  {current && home && (
+    <nav class="crumbs rise" aria-label="Breadcrumb">
+      <ol><li><a href={home.href}>{home.label}</a></li><li><span aria-current="page">{current.label}</span></li></ol>
+    </nav>
+  )}
+  {crumbLd && <script type="application/ld+json" is:inline set:html={crumbLd} />}
+  <p class="page-num rise">{greek ? `${greek} · ` : ""}{hero.eyebrow}</p>
+  <div class="top">
+    <h1 class="display page-title">{hero.title.map((line) => <span class="line-reveal hero-line"><span set:html={md(line)} /></span>)}</h1>
+    <p class="page-sub rise" set:html={md(hero.sub)} />
+  </div>
+  <div class="stage page-stage rise" data-stage={hero.stage.preset} data-seed={hero.stage.seed}></div>
+  <Marks caption={hero.caption} />
+</section>

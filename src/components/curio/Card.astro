@@ -1,0 +1,36 @@
+---
+/* Every curiosity template except the quote: note, image and link share this frame. */
+import { VISUALS } from "./visuals";
+import { md } from "../../lib/content";
+
+interface Props {
+  item: {
+    kind: "note" | "image" | "link";
+    size: number; tone: "light" | "dark" | "blue";
+    title: string; body?: string; tag?: string; ref?: string;
+    visual?: string; src?: string; alt?: string; url?: string;
+  };
+  /** Position among the cards, for the "Tag · 03" line. */
+  n: number;
+}
+const { item, n } = Astro.props;
+const cls = ["curio", `col-${item.size}`, item.tone !== "light" && item.tone, "reveal"].filter(Boolean).join(" ");
+const num = String(n).padStart(2, "0");
+const source = `${item.tag ? `${item.tag} · ` : ""}${num}${item.ref ? ` — ${item.ref}` : ""}`;
+const Tag = item.kind === "link" ? "a" : "article";
+const linkAttrs = item.kind === "link" ? { href: item.url, target: "_blank", rel: "noopener" } : {};
+---
+<Tag class={cls} {...linkAttrs}>
+  {item.kind === "image" && <div class="curio-image"><img src={item.src} alt={item.alt} loading="lazy" /></div>}
+  {item.visual && <div class="curio-visual" set:html={VISUALS[item.visual]} />}
+  <div>
+    <h2 class="curio-title" set:html={md(item.title)} />
+    {item.body && <p class="curio-body" set:html={md(item.body)} />}
+  </div>
+  {item.kind === "link" ? (
+    <div class="source-row">
+      <p class="source">{source}</p>
+      <span class="go-out" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14L14 4M6 4h8v8"/></svg></span>
+    </div>
+  ) : <p class="source">{source}</p>}
+</Tag>

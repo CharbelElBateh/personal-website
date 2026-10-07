@@ -1,0 +1,129 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { contact, site, md } from "../lib/content";
+// Edit content/contact.yaml (email and links come from content/site.yaml)
+
+const { person, links } = site;
+const key = site.web3formsKey;
+// Without JavaScript, Web3Forms redirects here after sending (needs the site's address).
+const thanksUrl = site.url ? `${site.url}/thanks.html` : null;
+---
+<Base title={contact.title} description={contact.description} pageKey="contact">
+  <PageHero pageKey="contact" hero={contact.hero} />
+
+  <section class="section">
+    <div class={contact.form.show ? "wrap contact-grid" : "wrap"}>
+      <div>
+        <div class="lines stagger">
+          <div><span class="k">Email</span><span class="v"><a href={`mailto:${person.email}`}>{person.email}</a></span></div>
+          {contact.lines.map((l) => <div><span class="k">{l.k}</span><span class="v" set:html={md(l.v)} /></div>)}
+          {links.length > 0 && (
+            <div><span class="k">Elsewhere</span><span class="v">{links.map((l, i) => <>
+              {i > 0 && <br />}
+              {l.url ? <a href={l.url} target="_blank" rel="noopener">{l.handle}</a> : <span class="pending">{l.handle} · link coming</span>}
+            </>)}</span></div>
+          )}
+        </div>
+        {contact.quote.show && (
+          <p class="lede reveal" style="font-family:var(--f-display);font-size:1.5rem;line-height:1.3;letter-spacing:-0.02em;margin-top:36px;max-width:24ch"><Fragment set:html={md(contact.quote.text)} />{contact.quote.aside && <> <span style="color:var(--fg-muted)">{contact.quote.aside}</span></>}</p>
+        )}
+      </div>
+      {contact.form.show && (
+        <form class="letter reveal" id="contact-form" data-to={person.email} data-key={key ?? undefined}
+          action={key ? "https://api.web3forms.com/submit" : undefined} method={key ? "POST" : undefined} novalidate>
+          {key && <>
+            <input type="hidden" name="access_key" value={key} />
+            <input type="hidden" name="from_name" value={`${person.name} — website`} />
+            {thanksUrl && <input type="hidden" name="redirect" value={thanksUrl} />}
+          </>}
+          {/* Spam traps: a box only bots tick, and a clock (bots submit instantly) */}
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="form-row">
+            <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="e-name" /><span class="err" id="e-name"></span></div>
+            <div class="field"><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="e-email" /><span class="err" id="e-email"></span></div>
+          </div>
+          <div class="field"><label for="f-subject">Subject</label><input id="f-subject" name="subject" type="text" required maxlength="200" aria-describedby="e-subject" /><span class="err" id="e-subject"></span></div>
+          <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required maxlength="8000" aria-describedby="e-message" placeholder="Say as much or as little as you like."></textarea><span class="err" id="e-message"></span></div>
+          <div class="form-foot">
+            <button type="submit" class="pill pill-accent"><span class="btn-label">{key ? contact.form.sendButton : contact.form.button}</span> <svg class="arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5"/></svg></button>
+            <span id="form-status" class="form-status" role="status">{contact.form.hint}</span>
+          </div>
+          {key && <p class="form-note">{contact.form.privacy}</p>}
+        </form>
+      )}
+    </div>
+  </section>
+
+  <script is:inline slot="after">document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    var statusEl = document.getElementById("form-status");
+    var button = form.querySelector('button[type="submit"]');
+    var TO = form.dataset.to;
+    var KEY = form.dataset.key;
+    var openedAt = Date.now();
+    var RULES = {
+      name: function (v) { return v ? "" : "Add your name."; },
+      email: function (v) { return !v ? "Add your email so I can reply." : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "That email address looks incomplete."; },
+      subject: function (v) { return v ? "" : "Add a subject."; },
+      message: function (v) { return v ? "" : "Write a message."; }
+    };
+    var fields = Array.prototype.slice.call(form.querySelectorAll("input[name]:not([type=hidden]):not(.hp), textarea"));
+    function check(field) {
+      var msg = RULES[field.name](field.value.trim());
+      document.getElementById("e-" + field.name).textContent = msg;
+      if (msg) field.setAttribute("aria-invalid", "true"); else field.removeAttribute("aria-invalid");
+      return !msg;
+    }
+    fields.forEach(function (f) {
+      f.addEventListener("blur", function () { if (f.value) check(f); });
+      f.addEventListener("input", function () { if (f.getAttribute("aria-invalid")) check(f); });
+    });
+    var mailLink = '<a class="inline-link" href="mailto:' + TO + '">' + TO + "</a>";
+    var label = button.querySelector(".btn-label");
+    var idleLabel = label.textContent;
+    function busy(on) {
+      button.disabled = on;
+      button.setAttribute("aria-busy", on ? "true" : "false");
+      label.textContent = on ? "Sending…" : idleLabel;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var bad = fields.filter(function (f) { return !check(f); });
+      if (bad.length) {
+        statusEl.textContent = "Fix the highlighted field" + (bad.length > 1 ? "s" : "") + ", then try again.";
+        bad[0].focus();
+        return;
+      }
+      // A bot ticked the hidden box, or filled everything in under three seconds: act sent, send nothing.
+      if (form.elements.botcheck.checked || Date.now() - openedAt < 3000) { location.href = "thanks.html"; return; }
+
+      var v = function (k) { return form.elements[k].value.trim(); };
+      if (!KEY) {
+        // No form service yet: hand the letter to the visitor's own email app.
+        var body = v("message") + "\n\n— " + v("name") + " (" + v("email") + ")";
+        location.href = "mailto:" + TO + "?subject=" + encodeURIComponent(v("subject")) + "&body=" + encodeURIComponent(body);
+        statusEl.innerHTML = "Your email app should open with the letter written out. Nothing opened? Write to " + mailLink + ".";
+        return;
+      }
+      busy(true);
+      statusEl.textContent = "Sending…";
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: KEY, from_name: form.elements.from_name.value, botcheck: false,
+          name: v("name"), email: v("email"), subject: v("subject"), message: v("message")
+        })
+      }).then(function (r) { return r.json(); }).then(function (res) {
+        if (!res.success) throw new Error(res.message || "rejected");
+        location.href = "thanks.html";
+      }).catch(function () {
+        busy(false);
+        statusEl.innerHTML = "The letter didn't go through. Try again in a moment, or write to " + mailLink + ".";
+      });
+    });
+  });</script>
+</Base>

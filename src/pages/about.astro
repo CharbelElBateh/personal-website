@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { about, site, page, md, personLd } from "../lib/content";
+// Edit content/about.yaml
+
+const { person } = site;
+const contact = page("contact");
+const doors = about.elsewhere.pages.map(page).filter((p) => p !== undefined);
+---
+<Base title={about.title} description={about.description} pageKey="about" jsonLd={[{ "@context": "https://schema.org", "@type": "ProfilePage", mainEntity: personLd() }]}>
+  <PageHero pageKey="about" hero={about.hero} />
+
+  <section class="section">
+    <div class="wrap about-grid">
+      <aside class="about-aside" aria-label="At a glance">
+        {about.portrait && (
+          <div class="portrait reveal"><img src={about.portrait} alt={about.portraitAlt ?? person.name} /></div>
+        )}
+        <div class="facts stagger">
+          {about.facts.map((f) => <div class="fact"><div class="k">{f.k}</div><div class="v" set:html={md(f.v)} /></div>)}
+        </div>
+        <div class="btn-row">
+          {person.cv && (
+            <a class="pill pill-accent" href={person.cv} download={person.cvDownloadName}>Download CV <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 1v9M3 6l4 4 4-4M1 13h12"/></svg></a>
+          )}
+          {contact && <a class="pill pill-light" href={contact.href}>Get in touch</a>}
+        </div>
+      </aside>
+      <div class="bio">
+        <p class="lede reveal" set:html={md(about.bio.lede)} />
+        {about.bio.paragraphs.map((p) => <p class="small reveal" set:html={md(p)} />)}
+      </div>
+    </div>
+  </section>
+
+  {about.elsewhere.show && doors.length > 0 && (
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head"><h2 class="display section-title"><span class="line-reveal"><span>{about.elsewhere.title}</span></span></h2></div>
+        <div class="doors stagger">
+          {doors.map((p) => (
+            <a class="door" href={p.href}><div><h2>{p.label}</h2>{p.blurb && <p>{p.blurb}</p>}</div><span class="go"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></span></a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Base>

@@ -1,0 +1,113 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Work page.
+# ─────────────────────────────────────────────────────────────────────────────
+
+title: Work — Charbel Al Bateh
+description: Roles, teams, and the systems Charbel Al Bateh helped ship.
+
+hero:
+  eyebrow: Work history
+  title: ["Where I have", "spent my *hours*."]
+  sub: Roles, teams, and the systems I helped ship. Click any row to open a longer account.
+  caption: Chronological · most recent first
+  stage: { preset: work, seed: 3 }
+
+# Each item becomes a row; clicking it opens a modal. Fields:
+#   id        short unique id; also the deep link (page.html#id)       required
+#   title     row and modal heading                                    required
+#   org       organisation / subtitle shown next to the title           required
+#   date      shown in the modal (and the row, unless rowDate is set)   required
+#   rowDate   shorter date for the row                                  optional
+#   tags      list of chips in the modal                                optional
+#   summary   first paragraph of the modal                              required
+#   bullets   "Highlights" list                                         optional
+#   embed     caption for the media slot in the modal                   optional
+#   close     closing line, shown in italics                            optional
+#   hidden    true = keep it in this file but leave it off the site     optional
+# Order in this file = order on the page.
+items:
+  - id: w1
+    title: AI Engineer
+    org: INMIND.AI
+    date: Oct 2025 — Present
+    tags: [ Agents, LLMs, R&D, Teaching ]
+    summary: Projects across the R&D division, from agentic product architecture to customer-support chatbots, alongside teaching at the INMIND academy.
+    bullets:
+      - Worked on various projects, mainly in the R&D division.
+      - Handled internal agentic product architecture and debugging.
+      - Took customer-support chatbots from development to deployment.
+      - Teach AI and data engineering at the INMIND academy.
+
+  - id: w2
+    title: Lab Assistant
+    org: Lebanese American University
+    date: Sep 2025 — Dec 2025 · Sep 2026 — Present
+    rowDate: Sep 2026 — Present
+    tags: [ Microelectronics, Digital testing, Synopsys EDA ]
+    summary: Assisting professors in Microelectronics and Testing for Digital Systems, using Synopsys EDA tools.
+    bullets:
+      - Assist professors in Microelectronics and Testing for Digital Systems courses using Synopsys EDA tools.
+      - Provide labs for students and support them through to completion.
+
+  - id: w3
+    title: Software Engineer (part-time)
+    org: MERAKI
+    date: Feb 2025 — Aug 2025
+    tags: [ Python, PHP, JavaScript ]
+    summary: Developed on-demand platforms using Python, PHP and JavaScript.
+    bullets:
+      - Developed on-demand platforms using Python, PHP and JavaScript.
+
+  - id: w4
+    title: R&D Vision Engineer
+    org: BMW Group
+    date: Aug 2024 — Dec 2024
+    tags: [ Point clouds, Synthetic data, Isaac Sim, Omniverse ]
+    summary: 3D point-cloud pipelines and synthetic-data augmentation built from BMW factory scans.
+    bullets:
+      - Manipulated the SORDI.AI dataset and applied a range of augmentation methods to the synthetic data.
+      - Contributed to pipelines that manipulate, process and create 3D point clouds from BMW factory scans.
+      - Reviewed the literature on point-cloud processing for object detection, classification and semantic segmentation.
+      - Used Isaac Sim (NVIDIA Omniverse) for scene scans, augmentation and point-cloud processing.
+      - Developed and improved an NVIDIA Omniverse extension to create LiDARs and annotate real point clouds.
+
+  - id: w5
+    title: Software Engineer
+    org: Invigo
+    date: Oct 2023 — Aug 2024
+    tags: [ PHP, Vue.js, APIs ]
+    summary: Refactored legacy PHP and migrated telecom employee-activity platforms to a new Vue.js interface.
+    bullets:
+      - Refactored legacy PHP code toward best practices and improved API request and response handling.
+      - Migrated platforms that telecom companies use for employee activity tracking to a new Vue.js UI.
+
+  - id: w6
+    title: Software Engineer Intern
+    org: Invigo
+    date: Jun 2023 — Aug 2023
+    tags: [ Python, Dashboards, PHP ]
+    summary: Parsed server KPIs and errors, and built an interactive dashboard to analyse them.
+    bullets:
+      - Implemented Python scripts to parse, clean and organise server KPIs and errors.
+      - Designed and developed an interactive dashboard with jQuery, Bootstrap and PHP for data analysis.
+
+  - id: w7
+    title: Software Engineer Intern
+    org: Galactech.io
+    date: May 2023 — Aug 2023
+    tags: [ OpenAI API, Laravel, REST ]
+    summary: An AI-integrated API for businesses, and a full-stack site for Lebanese tourist locations.
+    bullets:
+      - Designed and architected an AI-integrated API for businesses using the OpenAI API.
+      - Implemented a full-stack Laravel website for Lebanese tourist locations using a RESTful API.
+
+  - id: w8
+    title: Data Engineering Track
+    org: INMIND.AI
+    date: Jan 2023 — Mar 2023
+    tags: [ Palantir Foundry, PySpark, SQL ]
+    summary: Completed the data engineering and app development track on Palantir Foundry.
+    bullets:
+      - Completed the data engineering and app development track of Palantir Foundry.
+      - Used Foundry apps including Code Repository, Workshop, Contour, Ontology Manager and Pipeline Builder.
+      - Implemented solutions with PySpark, SQL, pandas, Power BI and Tableau.

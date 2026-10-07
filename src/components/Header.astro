@@ -1,0 +1,26 @@
+---
+import { site, pages, page } from "../lib/content";
+
+interface Props { active: string }
+const { active } = Astro.props;
+const contact = page("contact");
+const { person } = site;
+---
+<header class="site-header">
+  <a class="wordmark" href="index.html">{person.name}</a>
+  <div class="header-actions">
+    {contact && <a class="pill pill-ink hide-sm" href={contact.href}>Get in touch <span class="dot" aria-hidden="true"></span></a>}
+    <button class="pill pill-light menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu <span class="dots" aria-hidden="true"><i></i><i></i></span></button>
+  </div>
+</header>
+<nav class="menu" id="site-menu" aria-label="Primary">
+  <ul class="menu-links">
+    {pages.map((p) => (
+      <li><a href={p.href} aria-current={p.key === active ? "page" : undefined}><span class="greek" aria-hidden="true">{p.greek}</span>{p.label}<svg class="arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a></li>
+    ))}
+  </ul>
+  <div class="menu-foot">
+    <a href={`mailto:${person.email}`}>{person.email}</a>
+    {person.cv && <a href={person.cv} download={person.cvDownloadName}>Download CV (PDF)</a>}
+  </div>
+</nav>

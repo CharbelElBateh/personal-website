@@ -1,0 +1,97 @@
+---
+// Fonts are served from this site (no Google request; only the subsets a page uses are downloaded).
+import "@fontsource/cormorant-garamond/300.css";
+import "@fontsource/cormorant-garamond/400.css";
+import "@fontsource/cormorant-garamond/500.css";
+import "@fontsource/cormorant-garamond/400-italic.css";
+import "@fontsource/cormorant-garamond/500-italic.css";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "../styles/site.css"; // minified and content-hashed by the build
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import NextPage from "../components/NextPage.astro";
+import { BUILD_ID } from "../lib/build";
+import displayFont from "@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2?url";
+import bodyFont from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+import { site, page, absolute } from "../lib/content";
+
+interface Props {
+  title: string;
+  description: string;
+  pageKey: string;
+  bodyClass?: string;
+  /** Load the listing interactions (rows, modals, deep links). */
+  listing?: boolean;
+  /** Keep this page out of search results (404, thank-you). */
+  noindex?: boolean;
+  /** Structured data for search engines (schema.org objects). */
+  jsonLd?: object[];
+  /** Resolve relative links from the site root (for the 404 page, served at any depth). */
+  rooted?: boolean;
+}
+const { title, description, pageKey, bodyClass, listing = false, noindex = false, jsonLd = [], rooted = false } = Astro.props;
+
+// One version per build: browsers fetch fresh scripts and styles after every deploy.
+const V = `?v=${BUILD_ID}`;
+const href = page(pageKey)?.href;
+const canonical = !noindex && href ? absolute(href) : null;
+const ogImage = site.url ? `${site.url}/og.png` : null;
+const showMobileCta = pageKey !== "contact" && !noindex;
+const importMap = JSON.stringify({ imports: { three: `./vendor/three/three.module.min.js${V}`, "three/addons/": "./vendor/three/addons/" } });
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+{rooted && <base href={import.meta.env.BASE_URL} />}
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<meta name="color-scheme" content="dark" />
+{noindex && <meta name="robots" content="noindex" />}
+{canonical && <link rel="canonical" href={canonical} />}
+<meta property="og:type" content={pageKey === "home" ? "profile" : "website"} />
+<meta property="og:site_name" content={site.person.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{canonical && <meta property="og:url" content={canonical} />}
+{ogImage && <meta property="og:image" content={ogImage} />}
+{ogImage && <meta property="og:image:width" content="1200" />}
+{ogImage && <meta property="og:image:height" content="630" />}
+<meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin />
+<script type="importmap" is:inline set:html={importMap}></script>
+<link rel="modulepreload" href={`assets/boot.js${V}`} />
+{jsonLd.length > 0 && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd.length === 1 ? jsonLd[0] : jsonLd)} />}
+</head>
+<body class={bodyClass}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <slot name="before" />
+  <Header active={pageKey} />
+  <main id="main" tabindex="-1">
+    <slot />
+    {!noindex && <NextPage current={pageKey} />}
+  </main>
+  <slot name="after" />
+  <Footer />
+  {showMobileCta && (
+    <a class="pill pill-accent mobile-cta" href={site.mobileCta.href}>{site.mobileCta.label} <svg class="arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5"/></svg></a>
+  )}
+  <script is:inline defer src={`vendor/lenis.min.js${V}`}></script>
+  <script is:inline defer src={`assets/shared.js${V}`}></script>
+  <script is:inline defer src={`assets/scroll.js${V}`}></script>
+  {listing && <script is:inline defer src={`assets/listing.js${V}`}></script>}
+  <script is:inline type="module" src={`assets/boot.js${V}`}></script>
+</body>
+</html>

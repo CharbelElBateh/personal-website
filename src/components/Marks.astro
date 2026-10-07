@@ -1,0 +1,10 @@
+---
+/* The row of gold crosses under a stage, with a caption on the third. */
+interface Props { caption: string }
+const { caption } = Astro.props;
+---
+<div class="marks" aria-hidden="true">
+  {[0, 1, 2, 3].map((i) => (
+    <span><svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6.5 0v13M0 6.5h13"/></svg>{i === 2 && <span class="caption">{caption}</span>}</span>
+  ))}
+</div>

@@ -1,0 +1,88 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Projects page.
+# ─────────────────────────────────────────────────────────────────────────────
+
+title: Projects — Charbel Al Bateh
+description: Open-source tools and experiments by Charbel Al Bateh.
+
+hero:
+  eyebrow: Projects
+  title: ["Things I made", "on *weekends*."]
+  sub: Open-source tools and experiments. Some I use daily; some I don't.
+  caption: Open source · weekends · ongoing
+  stage: { preset: projects, seed: 9 }
+
+# Each item becomes a row; clicking it opens a modal. Fields:
+#   id        short unique id; also the deep link (page.html#id)       required
+#   title     row and modal heading                                    required
+#   org       organisation / subtitle shown next to the title           required
+#   date      shown in the modal (and the row, unless rowDate is set)   required
+#   rowDate   shorter date for the row                                  optional
+#   tags      list of chips in the modal                                optional
+#   summary   first paragraph of the modal                              required
+#   bullets   "Highlights" list                                         optional
+#   embed     caption for the media slot in the modal                   optional
+#   close     closing line, shown in italics                            optional
+#   hidden    true = keep it in this file but leave it off the site     optional
+# Order in this file = order on the page.
+items:
+  - id: pr1
+    title: Oracle — a tiny local-first research assistant
+    org: Open source · 2025
+    date: "2025"
+    tags: [ Rust, llama.cpp, Svelte ]
+    summary: A desktop research assistant that runs local models, indexes your own PDFs, and refuses to phone home.
+    bullets:
+      - Rust core wrapping llama.cpp and a vector index.
+      - Svelte desktop UI with a commonplace-book metaphor.
+      - Footprint under 120MB.
+    embed: Oracle · repository link pending
+    close: The project I use every morning.
+
+  - id: pr2
+    title: Meander — literate evaluation notebooks
+    org: Open source · 2024
+    date: "2024"
+    tags: [ Eval, Python, Notebook ]
+    summary: Evaluation notebooks that read like essays — a Python kernel extension for telling the story of your evals.
+    bullets:
+      - Inline-renders metric deltas as prose.
+      - Exports to PDF with a citation appendix.
+    embed: Meander · interactive demo
+    close: Eval is writing. Write it that way.
+
+  - id: pr3
+    title: Stele — a static site generator for research lab pages
+    org: Open source · 2023
+    date: "2023"
+    tags: [ SSG, TypeScript ]
+    summary: A static site generator tuned for academic labs — people, papers, reading groups, archival by default.
+    bullets:
+      - Built in TypeScript, deploys to anything.
+      - Zero JavaScript at runtime by default.
+    embed: Stele · gallery of labs using it
+    close: Paper sites should last a decade. This tries.
+
+  - id: pr4
+    title: Agora — a slow social reader for arXiv
+    org: Weekend hack · 2023
+    date: "2023"
+    tags: [ arXiv, Reader, Weekend ]
+    summary: "A reader for arXiv with one feature: you cannot scroll past an unread abstract. Read it or skip it."
+    bullets:
+      - Enforces intent.
+      - Keeps a private log of what I've read.
+    embed: Agora · screenshot reel
+    close: Tools that make me slower make me better.
+
+  - id: pr5
+    title: Hypatia — a study deck generator
+    org: Weekend hack · 2022
+    date: "2022"
+    tags: [ Study, LLM, Weekend ]
+    summary: Turn a textbook chapter into an Anki deck worth reviewing.
+    bullets:
+      - Local-only pipeline.
+      - Quality-controls cards via a tiny rubric.
+    embed: Hypatia · CLI demo
+    close: The project that taught me to ship before I polish.

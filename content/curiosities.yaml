@@ -1,0 +1,103 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# "Look at this" page: a grid of cards. Each item picks a template with `kind`.
+# Order in this file = order in the grid. Cards are numbered automatically (01, 02…).
+#
+# Shared fields (note, image, link):
+#   size    4 | 6 | 8 | 12   width out of 12 columns (phones stack everything)
+#   tone    light | dark | blue
+#   tag     small label at the bottom, e.g. Reading      → "Reading · 04"
+#   ref     optional text after the number               → "Reading · 04 — Meditations IV"
+#   hidden  true = keep it here but off the site
+#
+# kind: note    title, body, visual (a drawn line figure, see list below)
+# kind: image   title, body (optional), src (file in public/), alt
+# kind: link    title, body, url (whole card opens the link in a new tab), visual (optional)
+# kind: quote   text, by — a large centred quotation across the full width
+#
+# visuals: constellation, flutes, meander, orbits, rhythm, arrow, concentric, arcs
+# Markup in title/body/text: *gold italic*  **bold**  [link](https://…)
+# ─────────────────────────────────────────────────────────────────────────────
+
+title: Look at this — Charbel Al Bateh
+description: A cabinet of curiosities — beautiful ideas, odd artifacts, quiet papers, and the occasional rabbit hole.
+
+hero:
+  eyebrow: Look at this
+  title: ["A cabinet of", "*curiosities*."]
+  sub: Beautiful ideas, odd artifacts, quiet papers, and the occasional rabbit hole. Scroll slowly.
+  caption: Things worth attention
+  stage: { preset: curiosities, seed: 17 }
+
+items:
+  - kind: note
+    size: 8
+    tone: light
+    visual: constellation
+    title: Constellations, not categories.
+    body: Ideas cluster into loose asterisms, not clean taxonomies. The best reading systems I know let you trace lines between points without forcing each point into a folder.
+    tag: Commonplace
+    ref: A rolling reading list · Zettelkasten · Andy Matuschak's notes
+
+  - kind: note
+    size: 4
+    tone: dark
+    visual: flutes
+    title: The fluting teaches the eye.
+    body: Doric flutes are rhythm in stone — small repetition so the whole column reads as singular. I think about this when designing interfaces.
+    tag: Architecture
+    ref: On Greek architecture · Doxiadis
+
+  - kind: note
+    size: 6
+    tone: blue
+    visual: meander
+    title: The meander is an algorithm.
+    body: The Greek key is a single rule recursively applied — turn, cut, repeat. The oldest decoration we still use is, in a real sense, code.
+    tag: Pattern
+    ref: On ornament · Gombrich's Sense of Order
+
+  - kind: note
+    size: 6
+    tone: light
+    visual: orbits
+    title: Orbit reading, not linear.
+    body: Some texts reward returning to them, a little differently each time. Marcus Aurelius. Simone Weil. The collected letters of Grothendieck.
+    tag: Reading
+    ref: Currently re-reading · Meditations IV
+
+  - kind: note
+    size: 12
+    tone: dark
+    visual: rhythm
+    title: A timeline of small rituals.
+    body: "Morning: coffee, papers, notebook. Afternoon: code. Evening: read, or write, or both. The shape of the day is not a to-do list — it is an *oscillation*."
+    tag: Time
+    ref: On daily rhythms · Hadot · deep work
+
+  - kind: note
+    size: 4
+    tone: light
+    visual: arrow
+    title: Vertical, not viral.
+    body: Go deep before you go wide. A lesson I keep re-learning, and my favorite antidote to the feed.
+    tag: Idea
+
+  - kind: note
+    size: 4
+    tone: blue
+    visual: concentric
+    title: Concentric attention.
+    body: Attention is a set of nested circles — self, room, city, world. Most of my best work has come from pulling the outermost circles inward.
+    tag: Attention
+
+  - kind: note
+    size: 4
+    tone: light
+    visual: arcs
+    title: Drafts all the way down.
+    body: Every finished thing is a stack of drafts you stopped seeing. Keep the earlier ones. They teach you what you were trying to say.
+    tag: Curve
+
+  - kind: quote
+    text: "“The soul becomes dyed with the color of its thoughts.”"
+    by: A reminder on my desk.

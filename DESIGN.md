@@ -14,6 +14,11 @@ colors:
   hairline: "rgba(232, 226, 209, 0.12)"
   hairline-ink: "rgba(232, 226, 209, 0.14)"
   hairline-strong: "rgba(232, 226, 209, 0.28)"
+  gold-glass-top: "rgba(222, 192, 132, 0.46)"
+  gold-glass-base: "rgba(201, 169, 110, 0.16)"
+  gold-ring: "rgba(230, 204, 150, 0.55)"
+  parchment: "#f6ead0"
+  error-rose: "#e7a98f"
 typography:
   display:
     fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
@@ -37,7 +42,7 @@ typography:
     fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
     fontSize: "clamp(1.5rem, 2.6vw, 2.6rem)"
     fontWeight: 400
-    lineHeight: 1.12
+    lineHeight: 1.3
     letterSpacing: "-0.015em"
   title:
     fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
@@ -52,9 +57,9 @@ typography:
     lineHeight: 1.55
   label:
     fontFamily: "JetBrains Mono, ui-monospace, SF Mono, Menlo, monospace"
-    fontSize: "0.7rem"
+    fontSize: "0.76rem"
     fontWeight: 400
-    letterSpacing: "0.24em"
+    letterSpacing: "0.2em"
   label-sans:
     fontFamily: "Inter, system-ui, -apple-system, sans-serif"
     fontSize: "0.8rem"
@@ -184,6 +189,7 @@ A near-monochrome warm night: black surfaces in four close steps, cream type in 
 
 ### Primary
 - **Laurel Gold** (`gold`): the only accent. Gold italic emphasis inside display, statement and lede lines; mono labels and registration captions; "+" marks, stage corner brackets and meander strokes; the primary pill, the circular "go" button on work cards, the hovered listing chevron; inline links; the scroll-progress bar, selection, focus outline and text caret; the preloader counter and bar. It also lights the 3D: gold metal, the rim light and the star field.
+- **Gold Glass** (`gold-glass-top` to `gold-glass-base`, ringed by `gold-ring`): the translucent gold of primary pills and the work-card "go" button, a 160deg gradient over the backdrop blur. Text on it is **Parchment** (`parchment`), a warm cream that holds contrast on gold.
 - **Burnished Gold** (`gold-burnished`): a darker gold used only as a 1px ring, around dark curiosity cards at rest and around a door card on hover. It is not the button hover; pills hover to cream.
 
 ### Neutral
@@ -200,6 +206,8 @@ A near-monochrome warm night: black surfaces in four close steps, cream type in 
 **The One Gold Rule.** Gold is the only chromatic colour in the interface. Nothing else is tinted; cream, black and gold make every surface.
 
 **The Gold Emphasis Rule.** Emphasis in a Cormorant line is a gold italic `em`, one phrase at most per line. Bold is never the emphasis device in display type.
+
+**The Error Exception.** Form errors use **Error Rose** (`error-rose`), a desaturated warm rose, for the message and the field ring. It is the one sanctioned non-gold hue, and it appears only when a field is invalid.
 
 **The Four Blacks Rule.** Depth on the page comes from four blacks (true black, night, obsidian, raised ink) and cream hairlines. Do not add lighter greys to separate surfaces.
 
@@ -218,7 +226,7 @@ A near-monochrome warm night: black surfaces in four close steps, cream type in 
 - **Lede** (400, clamp(1.5rem, 2.6vw, 2.6rem), 1.12): the opening paragraph of a section, in the serif.
 - **Title** (400, clamp(1.4rem, 2.6vw, 2.6rem), 1.02): listing rows; work-card titles run slightly smaller (clamp(1.4rem, 2.2vw, 2.2rem)). Modal titles (clamp(1.8rem, 3.6vw, 2.8rem)), curiosity titles and door titles (1.9rem) share this register; key-value values are serif at 1.3rem.
 - **Body** (400, 17px, 1.55; 16px under 560px): paragraphs, capped at 60 to 62ch.
-- **Label** (JetBrains Mono 400, 0.7rem, 0.24em, uppercase, gold): registration captions under stages and side labels such as "Currently".
+- **Label** (JetBrains Mono 400, 0.76rem, 0.2em, uppercase, gold): registration captions under stages and side labels such as "Currently".
 - **Label Sans** (Inter 600, 0.8rem, 0.06em, uppercase, dust cream): form field labels, fact and contact keys, modal subheads, footer column heads.
 - **Button** (Inter 500, 0.74rem, 0.14em, uppercase): every pill.
 - **Data** (JetBrains Mono, 0.8rem, dust cream): dates in rows and cards, modal meta.
@@ -288,26 +296,32 @@ Quiet capsules with a tracked uppercase voice.
 - **Style:** true-black field with a quiet hairline border, cream Inter text, 14px 16px padding; uppercase sans label above in dust cream; gold caret.
 - **Focus:** the border turns gold and the field steps to night; the outline is suppressed in favour of the border.
 - **Status:** a dust-cream status line beside the submit pill (`role="status"`).
+- **Errors:** each field owns an error line (`aria-describedby`) and gets `aria-invalid` plus an error-rose ring when it fails; the first invalid field takes focus on submit.
 
 ### Navigation
 - **Header:** fixed, transparent, serif wordmark at 1.3rem on the left; gold "Get in touch" pill and ghost "Menu" pill on the right. It slides up out of view on scroll down and returns on scroll up.
-- **Menu:** a frosted glass panel (max 340px) that grows from its trigger at the top right (scale 0.96 to 1, 300ms). Each row is a 1.45rem serif page name led by its gold italic Greek capital ordinal (Α to Η), with an arrow that slides in on hover over a 5% cream wash. The current page is gold. A hairline foot carries email and location. Escape and outside click close it; focus moves to the first link on open.
-- **Scroll progress:** a 2px gold bar across the top of the viewport.
+- **Menu:** a frosted glass panel (max 340px) that grows from its trigger at the top right (scale 0.96 to 1, 300ms). Each row is a 1.45rem serif page name led by its gold italic Greek capital ordinal (Α to Η), with an arrow that slides in on hover over a 5% cream wash. The current page is gold. A hairline foot carries the email and a CV download. Escape and outside click close it; focus moves to the first link on open.
+- **Breadcrumbs:** inner pages open with a mono trail (`Home / Work`) above the Greek page number, muted, with the current page unlinked.
+- **Next page:** inner pages end with a full-width "Next · Δ" row (serif title, blurb, round arrow that turns gold and rotates on hover), following menu order.
+- **Phone CTA:** under 720px a gold pill ("Write a letter") pins to the bottom centre once the first screen has scrolled away, and steps aside over the footer, the home finale, the preloader and the open menu. Not shown on Contact.
+- **Skip link:** the first Tab stop is a gold "Skip to content" pill.
+- **Scroll progress:** a 2px gold bar across the top of the viewport, with no glow.
+- **Scrollbar:** drawn in the DOM on every device, because phones and Safari ignore scrollbar CSS; the native page bar is hidden. A 4px gold thumb on a faint 2px rail at the right edge, scaling wider (never resizing) on hover and to 8px while dragged. Mouse, touch and pen can drag the thumb or click the track to jump. On touch screens it shows while scrolling and fades after 1.2s. The menu and modal keep a thin styled native bar.
 
 ### Listing Rows (signature)
-Full-width rows for Work, Publishings and Projects: serif title, dim meta, mono date and a 48px outline chevron, ruled top and bottom with strong hairlines. On hover a raised-ink panel wipes up from the bottom edge, extended into the gutters (380ms), the title slides 16px right, and the chevron fills gold and rotates -45deg. Each row opens a centred modal (scale 0.96 to 1) with mono meta, serif title, dim body, gold bullet dots on hairline-ruled lists and pill tags; focus is trapped inside and returns to the row on close.
+Full-width rows for Work, Publications and Projects: serif title, cream meta (the organisation or venue, never dimmed past 82%), mono date and a 48px outline chevron, ruled top and bottom with strong hairlines. On hover a raised-ink panel wipes up from the bottom edge, extended into the gutters (380ms), the title slides 16px right, and the chevron fills gold and rotates -45deg. Each row opens a centred modal (scale 0.96 to 1) with mono meta, serif title, dim body, gold bullet dots on hairline-ruled lists and pill tags; focus is trapped inside and returns to the row on close. Every item has a shareable address (`work.html#w1`, `publishings.html#p2`) that opens its modal, and the modal can copy it. Publications carry authors (the owner in bold), year, arXiv and PDF links (also shown as small glass pills under the row), the abstract, and a Copy BibTeX action.
 
 ### Stage (signature)
 The framed 3D window. A dark radial well (#12110e to black) holding a WebGL canvas that fades in over 900ms once the first frame is ready. Glass relics are drawn to the centre, collide softly and are shoved by the cursor. Forms are fluted drums, capitals, orbs, laurel rings, Greek-key tiles and tesserae; only glass and gold: clear iridescent glass, gold rims on drums and orbs, and about one piece in twelve in solid gold. Each piece keeps a margin of air around it; motion is slow and the light soft (the Calm Vitrine rule). Home holds 18 pieces (11 on phones), inner pages 14 (9). If WebGL fails, a gold-to-black radial stands in. Cards use static renders of the same cluster.
 
 ### Finale (home, signature)
-A pinned 640vh sequence before the footer, one camera flight through one scene: a gold-framed window in a black wall tilts square and the camera flies through its glass; a void with a rainbow halo ring where an uppercase serif statement spreads apart word by word; a colonnade of fluted marble columns with gold capitals on a black floor; a glass pane that shatters into iridescent shards (shards dissolve as they reach the lens); then glass crystals in a gold glow with the closing call to action, "Write a *letter*, I'll write back", and a gold pill to Contact. On the home page this replaces the footer's giant call to action. Reduced motion shows only the final frame.
+A pinned 1100vh sequence before the footer (a glass "Skip to the end" pill is shown while it runs), one camera flight through one scene: a gold-framed window in a black wall tilts square and the camera flies through its glass; a void with a rainbow halo ring where an uppercase serif statement spreads apart word by word; a colonnade of fluted marble columns with gold capitals on a black floor; a glass pane that shatters into iridescent shards (shards dissolve as they reach the lens); then glass crystals in a gold glow with the closing call to action, "Write a *letter*, I'll write back", and a gold pill to Contact. On the home page this replaces the footer's giant call to action. Reduced motion shows only the final frame.
 
 ### Glass controls
-Every control is glass. Primary pills are gold-tinted glass with a gold ring and soft glow; secondary pills, round arrow buttons, chips, tags and fields are clear frosted glass with a bright top edge. Hover states live on a separate layer that fades in over 450ms (gradients cannot interpolate), and a soft light sweeps across pills over 1.1s; on leave the sweep fades rather than reversing. The scrollbar is a thin gold glass thread on black.
+Every control is glass. Primary pills are gold-tinted glass with a gold ring and a neutral black drop shadow (no gold glow); secondary pills, round arrow buttons, chips, tags and fields are clear frosted glass with a bright top edge. Hover states live on a separate layer that fades in over 450ms (gradients cannot interpolate), and a soft light sweeps across pills over 1.1s; on leave the sweep fades rather than reversing. The scrollbar is described under Navigation.
 
 ### Preloader
-First visit per session on home only: a night-black sheet with an oversized gold italic counter (000 to 100, tabular figures) in the lower left and a thin gold bar, held until the stage reports its first frame, then wiped upward with a 900ms clip.
+First visit per session on home only: a night-black sheet with an oversized gold italic counter (000 to 100, tabular figures) in the lower left and a thin gold bar with the current step, held until fonts, the 3D engine and the stage's first frame are ready (never more than 6s; the finale warms up afterwards in the background), then wiped upward with a 900ms clip.
 
 ## Do's and Don'ts
 

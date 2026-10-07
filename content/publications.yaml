@@ -1,0 +1,11 @@
+# Publications page. The entries themselves live in publications.bib.
+
+title: Publications — Charbel Al Bateh
+description: Papers and preprints by Charbel Al Bateh, from quantum machine learning to LLM reasoning.
+
+hero:
+  eyebrow: Publications
+  title: ["Papers, drafts,", "and small *notes*."]
+  sub: Papers and preprints — from quantum machine learning to LLM reasoning, with more on KV caching and physics-informed networks on the way.
+  caption: Preprints and work in preparation
+  stage: { preset: publishings, seed: 5 }

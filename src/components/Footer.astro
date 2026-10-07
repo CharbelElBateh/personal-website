@@ -1,0 +1,30 @@
+---
+import { site, page, md } from "../lib/content";
+
+const { person, links, footer } = site;
+const contact = page("contact");
+const group = (keys: string[]) => keys.map(page).filter((p) => p !== undefined);
+const read = group(footer.read);
+const wander = group(footer.wander);
+---
+<footer class="site-footer"><div class="wrap">
+  <a class="footer-cta" href={contact ? contact.href : `mailto:${person.email}`}><Fragment set:html={md(footer.cta)} /> <svg class="arrow-big" width="0.62em" height="0.62em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 19L19 5M8 5h11v11"/></svg></a>
+  <div class="footer-grid">
+    <div>
+      <h2>Write</h2>
+      <a href={`mailto:${person.email}`}>{person.email}</a>
+      {person.cv && <a href={person.cv} download={person.cvDownloadName}>Download CV (PDF)</a>}
+    </div>
+    {links.length > 0 && (
+      <div>
+        <h2>Elsewhere</h2>
+        {links.map((l) => l.url
+          ? <a href={l.url} target="_blank" rel="noopener">{l.label}</a>
+          : <span class="pending">{l.label} · link coming</span>)}
+      </div>
+    )}
+    {read.length > 0 && <div><h2>Read</h2>{read.map((p) => <a href={p.href}>{p.label}</a>)}</div>}
+    {wander.length > 0 && <div><h2>Wander</h2>{wander.map((p) => <a href={p.href}>{p.label}</a>)}</div>}
+  </div>
+  <div class="footer-base"><span>{person.name} · {person.role}</span><span>{footer.base}</span></div>
+</div></footer>

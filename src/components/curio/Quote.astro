@@ -1,0 +1,8 @@
+---
+import { md } from "../../lib/content";
+interface Props { item: { text: string; by?: string } }
+const { item } = Astro.props;
+---
+<div class="curio-quote">
+  <p class="quote reveal"><Fragment set:html={md(item.text)} />{item.by && <span class="by">{item.by}</span>}</p>
+</div>

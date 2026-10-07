@@ -1,0 +1,17 @@
+# Pages people land on by accident or after an action. Not in the menu or the sitemap.
+# Markup: *gold italic*  **bold**  [link](page.html)
+
+notFound:
+  title: Page not found — Charbel Al Bateh
+  description: This page doesn't exist. Try one of the pages below.
+  eyebrow: "404"
+  heading: ["This page", "has gone *missing*."]
+  sub: The address may have changed, or it never existed. One of these should get you where you meant to go.
+
+thanks:
+  title: Letter sent — Charbel Al Bateh
+  description: Your letter to Charbel Al Bateh has been sent. A reply usually follows within a few days.
+  eyebrow: Sent
+  heading: ["Thank you,", "your *letter* is on its way."]
+  sub: It went straight to my inbox. I read everything and reply to most, usually within a few days.
+  back: { label: Back to the home page, href: index.html }

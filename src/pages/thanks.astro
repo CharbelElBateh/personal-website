@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import SimpleHero from "../components/SimpleHero.astro";
+import { system, page } from "../lib/content";
+// Edit content/system.yaml → thanks. The contact form sends visitors here after a successful send.
+const t = system.thanks;
+const others = ["work", "publications", "curiosities"].map(page).filter((p) => p !== undefined);
+---
+<Base title={t.title} description={t.description} pageKey="thanks" noindex>
+  <SimpleHero eyebrow={t.eyebrow} heading={t.heading} sub={t.sub}>
+    <div class="btn-row reveal">
+      <a class="pill pill-accent" href={t.back.href}>{t.back.label}</a>
+      {others.map((p) => <a class="pill pill-light" href={p.href}>{p.label}</a>)}
+    </div>
+  </SimpleHero>
+</Base>

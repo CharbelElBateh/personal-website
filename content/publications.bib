@@ -1,0 +1,57 @@
+% ─────────────────────────────────────────────────────────────────────────────
+% Publications shown on publishings.html, in this order (top = first on the page).
+%
+% Paste entries straight from arXiv / Google Scholar / your .bib; the key is the
+% deep link (publishings.html#<key>). Standard fields used by the site:
+%   title, author ("Last, First and ..."), year, eprint (arXiv id), doi, url,
+%   journal / booktitle, abstract
+% Site-only fields (left out of the "Copy BibTeX" button):
+%   venue     line under the title, e.g. "arXiv preprint · under review at X"
+%   summary   one or two plain sentences, shown above the abstract
+%   keywords  comma-separated, shown as tags
+%   date      overrides the year in the row, e.g. {In preparation}
+%   hidden    {true} keeps the entry here but off the site
+% Your own name (person.name in site.yaml) is set in bold automatically.
+% ─────────────────────────────────────────────────────────────────────────────
+
+@misc{aoun2026quantum,
+  title         = {Quantum State Preparation via Neural Network Encoding in Quantum Machine Learning},
+  author        = {Aoun, K. and Kiwit, Florian J. and Riofrío, C. A. and Saab, S. and Al Bateh, Charbel and Tekli, Joe and Luckow, André},
+  year          = {2026},
+  eprint        = {2605.31006},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2605.31006},
+  venue         = {arXiv preprint · major revision, Physical Review Research},
+  keywords      = {Quantum ML, Neural networks},
+  summary       = {A classical neural network maps input data straight to the parameters of a fixed quantum circuit, so new inputs are encoded in a single inference step instead of a per-instance variational optimisation.},
+  abstract      = {A central challenge in quantum machine learning is the state preparation bottleneck that describes the prohibitive computational cost of loading high-dimensional classical data into a quantum state. Although amplitude encoding can represent 2^n-dimensional data using only n qubits in principle, preparing arbitrary states remains computationally expensive, typically requiring variational optimization of a parameterized quantum circuit for each individual data instance. In this work, we propose a method that avoids iterative optimization by training a classical neural network to map input data directly to the continuous parameters of a fixed quantum circuit. We demonstrate the generation of quantum image states with high fidelity on data not seen during training. Since all optimization is performed once during training, the resulting model encodes new inputs in a single inference step, providing a scalable pathway for data loading in near-term quantum algorithms. We validate our method on the MNIST and Fashion-MNIST datasets, achieving fidelities up to 0.992 on unseen images and reducing the per-data-instance runtime by more than 5000-fold.}
+}
+
+@misc{albateh2026mira,
+  title         = {MIRA-Math: A Benchmark for Minimal Information Requesting and Mathematical Reasoning},
+  author        = {Al Bateh, Charbel and Saab, S.},
+  year          = {2026},
+  eprint        = {2607.07391},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2607.07391},
+  venue         = {arXiv preprint · submitting to Transactions of the ACL},
+  keywords      = {LLMs, Benchmark, Reasoning},
+  summary       = {A benchmark of 2,310 maths problems that each hide exactly one necessary fact: the model has to ask for it, under a strict budget, before it can answer.},
+  abstract      = {Mathematical reasoning benchmarks typically provide all facts needed to solve each problem, while interactive benchmarks often mix reasoning with tools, retrieval, and long-horizon dialogue. We introduce MIRA-Math, a benchmark for a narrower diagnostic capability: solving mathematical problems whose full latent state has a unique answer, but whose solver-facing view is missing exactly one necessary atomic fact. The solver must request the missing information in natural language under a strict budget and then integrate the returned fact into an exact final answer. A fixed constrained LLM responder sees only the dataset-provided atomic fact and must either offer the quoted fact when the request matches it, or decline otherwise. Thus, instance generation, typed hint specifications, validation, and final-answer verification are deterministic, while request metrics are measured under a fixed LLM-mediated responder channel. MIRA-Math contains 2,310 generated instances from 22 typed mathematical families spanning algebra, probability, linear systems, discrete structures, signal processing, Markov chains, circuits, interpolation, and numerical boundary-value problems. Experiments across frontier and small models show that request success and final-answer accuracy are separable: models may ask for the right fact yet fail the downstream computation, or fail before obtaining the canonical hint. We release generators, verifiers, prompts, run metadata, and dataset documentation to support reproducible evaluation of minimal information requesting in mathematical reasoning.}
+}
+
+@unpublished{kvcaching-inprep,
+  title         = {KV caching},
+  venue         = {Forthcoming submission},
+  date          = {In preparation},
+  keywords      = {LLMs, Inference},
+  summary       = {A forthcoming submission on KV caching. Details once it is under review.}
+}
+
+@unpublished{pinn-electronics-inprep,
+  title         = {Physics-informed neural networks for electronics},
+  venue         = {Forthcoming submission},
+  date          = {In preparation},
+  keywords      = {PINNs, Electronics},
+  summary       = {A forthcoming submission on physics-informed neural networks for electronics. Details once it is under review.}
+}

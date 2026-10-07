@@ -1,0 +1,49 @@
+---
+/* One dialog per listing item; listing.js opens them from rows and deep links. */
+import ExtLinks from "./ExtLinks.astro";
+import { site } from "../lib/content";
+
+export interface ModalEntry {
+  id: string; title: string; org: string; date: string; tags: string[];
+  summary?: string; abstract?: string; authors?: string[];
+  bullets?: string[]; embed?: string; close?: string;
+  arxiv?: string; doi?: string; url?: string; bibtex?: string;
+}
+interface Props { items: ModalEntry[] }
+const { items } = Astro.props;
+const self = site.person.name;
+---
+<div>
+  {items.map((item) => (
+    <div class="modal-backdrop" id={`modal-${item.id}`} aria-hidden="true">
+      <div class="modal" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby={`mt-${item.id}`}>
+        <button class="modal-close" type="button" aria-label="Close" onclick="window.closeModal(this)">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M1 1l10 10M11 1L1 11"/></svg>
+        </button>
+        <h2 id={`mt-${item.id}`}>{item.title}</h2>
+        <p class="modal-org">{item.org}</p>
+        {item.authors && (
+          <p class="modal-authors">{item.authors.map((a, i) => <>{i > 0 && ", "}{a === self ? <strong>{a}</strong> : a}</>)}</p>
+        )}
+        <div class="modal-meta">{item.date}</div>
+        {item.abstract ? (
+          <>
+            {item.summary && <p class="modal-lede">{item.summary}</p>}
+            <h3>Abstract</h3><p>{item.abstract}</p>
+          </>
+        ) : item.summary && <p>{item.summary}</p>}
+        {item.bullets && <><h3>Highlights</h3><ul>{item.bullets.map((b) => <li>{b}</li>)}</ul></>}
+        {item.embed && <div class="modal-embed">{item.embed}</div>}
+        {item.close && <p class="modal-close-line">— {item.close}</p>}
+        {item.tags.length > 0 && <div class="tags">{item.tags.map((t) => <span class="tag">{t}</span>)}</div>}
+        <div class="modal-actions">
+          <ExtLinks item={item} />
+          {item.bibtex && <button class="ext" type="button" data-copy="bibtex">Copy BibTeX</button>}
+          <button class="ext" type="button" data-copy="link">Copy link</button>
+          <span class="copy-status" role="status"></span>
+        </div>
+        {item.bibtex && <pre class="bibtex" hidden>{item.bibtex}</pre>}
+      </div>
+    </div>
+  ))}
+</div>

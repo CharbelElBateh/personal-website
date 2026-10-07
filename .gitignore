@@ -1,0 +1,52 @@
+# ── Build output and dependencies ────────────────────────────────────────────
+node_modules/
+dist/
+.astro/
+# copied from node_modules on every build
+public/vendor/
+
+# ── Secrets: never commit these ──────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+secrets.*
+credentials*.json
+service-account*.json
+.netlify/
+.vercel/
+
+# ── Local tool state (machine-specific, may hold session tokens or paths) ────
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/live/
+.claude/settings.local.json
+.claude/todos/
+.claude/projects/
+
+# ── Logs, caches, OS and editor clutter ──────────────────────────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+.cache/
+.lighthouseci/
+coverage/
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+
+# ── Private source material (keep originals out; publish only the web copy) ─
+*.private.*
+private/

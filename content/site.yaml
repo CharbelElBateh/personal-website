@@ -1,0 +1,52 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Site-wide settings: who you are, where you are online, and which pages exist.
+#
+# Text fields accept a tiny bit of markup:  *gold italic*   **bold**   [link](work.html)
+# Any page with `enabled: false` is not built, and disappears from the menu,
+# footer and About "Elsewhere" doors. Greek numerals re-letter automatically.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# The site's address, e.g. https://charbelalbateh.com — no trailing slash.
+# Canonical links, sitemap.xml and social previews switch on once this is set.
+url: null
+
+# Contact form delivery (https://web3forms.com: enter your email there, they mail you a key).
+# While null, the form opens the visitor's own email app instead.
+web3formsKey: null
+
+# The pinned "write to me" button on phones (hidden on the contact page itself)
+mobileCta: { label: Write a letter, href: contact.html }
+
+person:
+  name: Charbel Al Bateh
+  role: AI Engineer & Researcher
+  email: charbelelbateh@gmail.com
+  cv: CV.pdf                              # file in public/; remove the line to hide every CV link
+  cvDownloadName: Charbel-Al-Bateh-CV.pdf
+
+# `url: null` shows the link greyed out as "· link coming"
+links:
+  - { label: GitHub,   handle: github / CharbelElBateh,     url: https://github.com/CharbelElBateh }
+  - { label: Scholar,  handle: scholar,                     url: null }
+  - { label: LinkedIn, handle: linkedin / charbel-al-bateh, url: https://www.linkedin.com/in/charbel-al-bateh }
+
+# Order here = order in the menu. `blurb` is used by the About page doors.
+pages:
+  - { key: home,         label: Home,         href: index.html,        enabled: true }
+  - { key: about,        label: About,        href: about.html,        enabled: true }
+  - { key: work,         label: Work,         href: work.html,         enabled: true,
+      blurb: "Companies, roles, the systems I helped ship, and the ones I learned from." }
+  - { key: publications, label: Publications, href: publishings.html,  enabled: true,
+      blurb: "Papers and preprints — from quantum machine learning to LLM reasoning." }
+  - { key: projects,     label: Projects,     href: projects.html,     enabled: true,
+      blurb: "Open source, weekend builds, and small tools that refused to die." }
+  - { key: curiosities,  label: Look at this, href: curiosities.html,  enabled: true,
+      blurb: "A cabinet of curiosities — ideas, books, and odd beautiful things." }
+  - { key: contact,      label: Contact,      href: contact.html,      enabled: true }
+
+footer:
+  cta: "Write a *letter*, I'll write back"
+  # Page keys listed under each footer heading (disabled pages are skipped)
+  read: [work, publications, projects]
+  wander: [about, curiosities, contact]
+  base: MMXXVI — built with patience

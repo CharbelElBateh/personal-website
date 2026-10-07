@@ -1,0 +1,28 @@
+---
+/* Rows for Work, Publications and Projects. Pair with <ListingModals> placed after <main>. */
+import ExtLinks from "./ExtLinks.astro";
+
+export interface ListingEntry {
+  id: string; title: string; org: string; date: string; rowDate?: string;
+  arxiv?: string; doi?: string; url?: string;
+}
+interface Props { items: ListingEntry[] }
+const { items } = Astro.props;
+---
+<section class="section">
+  <div class="wrap">
+    <div class="listing">
+      {items.map((item) => (
+        <div class="listing-item reveal" id={item.id}>
+          <button class="listing-row" type="button" data-id={item.id} aria-haspopup="dialog">
+            <span class="title">{item.title}</span>
+            <span class="meta">{item.org}</span>
+            <span class="date">{item.rowDate || item.date}</span>
+            <span class="chevron" aria-hidden="true"><svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 5h14M11 1l4 4-4 4"/></svg></span>
+          </button>
+          {(item.arxiv || item.doi || item.url) && <div class="row-links"><ExtLinks item={item} /></div>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

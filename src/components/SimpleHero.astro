@@ -1,0 +1,12 @@
+---
+/* A hero without a 3D stage, for the 404 and thank-you pages. */
+import { md } from "../lib/content";
+interface Props { eyebrow: string; heading: string[]; sub: string }
+const { eyebrow, heading, sub } = Astro.props;
+---
+<section class="page-hero simple-hero wrap">
+  <p class="page-num rise">{eyebrow}</p>
+  <h1 class="display page-title">{heading.map((line) => <span class="line-reveal hero-line"><span set:html={md(line)} /></span>)}</h1>
+  <p class="page-sub rise" set:html={md(sub)} />
+  <slot />
+</section>

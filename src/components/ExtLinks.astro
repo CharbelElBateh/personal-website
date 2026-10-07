@@ -1,0 +1,10 @@
+---
+/* Small glass pills: arXiv, PDF, DOI. */
+interface Props { item: { arxiv?: string; doi?: string; url?: string } }
+const { item } = Astro.props;
+const out = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8l6-6M3.5 2H8v4.5"/></svg>';
+---
+{item.arxiv && <a class="ext" href={`https://arxiv.org/abs/${item.arxiv}`} target="_blank" rel="noopener">arXiv {item.arxiv} <Fragment set:html={out} /></a>}
+{item.arxiv && <a class="ext" href={`https://arxiv.org/pdf/${item.arxiv}`} target="_blank" rel="noopener">PDF <Fragment set:html={out} /></a>}
+{item.doi && <a class="ext" href={`https://doi.org/${item.doi}`} target="_blank" rel="noopener">DOI <Fragment set:html={out} /></a>}
+{item.url && !item.arxiv && !item.doi && <a class="ext" href={item.url} target="_blank" rel="noopener">Read <Fragment set:html={out} /></a>}

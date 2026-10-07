@@ -1,0 +1,64 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Home page. Each section has `show:`; set it to false to drop that section.
+# Markup: *gold italic*  **bold**  [link](page.html)
+# ─────────────────────────────────────────────────────────────────────────────
+
+title: Charbel Al Bateh — AI Engineer & Researcher
+description: AI engineer and researcher working across machine learning, LLM reasoning and quantum machine learning.
+
+intro:
+  show: true
+  statement: "AI Engineer at INMIND.AI, Computer Engineering at LAU. Building systems that learn, reason, and — occasionally — *surprise their maker.*"
+  name: ["Charbel", "Al *Bateh*"]           # one entry per line of the big name
+  cta: { label: Explore the work, href: work.html }
+  tagline: "Teaching machines to *hesitate* before they speak."
+  caption: Scroll to explore
+  stage: { preset: home, seed: 7 }
+
+now:
+  show: true
+  label: Currently
+  lede: "Most of my recent work lives at the seam between retrieval, reasoning, and restraint — the craft of building agents that know *when* to answer, when to ask, and when to defer."
+  small: "I write up what I learn, open-source the useful bits, and keep a small commonplace book of beautiful things — see [Look at this](curiosities.html)."
+  figures:
+    - { k: "2", v: preprints on arXiv }
+    - { k: "2", v: papers in preparation }
+    - { k: "3", v: "fields: AI, quantum, hardware" }
+
+recent:
+  show: true
+  title: Recently
+  more: { label: The whole trajectory, href: work.html }
+  # `link` is page#id. The id must exist on that page (and not be hidden), or the build fails.
+  # Publication ids are the BibTeX keys in publications.bib.
+  # `still` picks the 3D still-life preset (home, about, work, publishings, projects, curiosities, contact).
+  cards:
+    - link: work.html#w1
+      chip: Work
+      title: Agentic products and support chatbots
+      sub: AI Engineer · INMIND.AI
+      date: Oct 2025 — now
+      still: { preset: work, seed: 11 }
+    - link: publishings.html#albateh2026mira
+      chip: Publication
+      title: "MIRA-Math: minimal information requesting and mathematical reasoning"
+      sub: Al Bateh & Saab · arXiv 2607.07391
+      date: "2026"
+      still: { preset: publishings, seed: 23 }
+    - link: publishings.html#aoun2026quantum
+      chip: Publication
+      title: Quantum state preparation via neural network encoding
+      sub: arXiv 2605.31006 · major revision, PRR
+      date: "2026"
+      still: { preset: projects, seed: 41 }
+
+finale:
+  show: true
+  # Each entry is one line of the fly-through statement
+  statement:
+    - Good systems,
+    - like good philosophers,
+    - earn their *confidence*.
+  eyebrow: Contact
+  title: ["Write a *letter*,", "I'll write back."]
+  cta: { label: Write a letter, href: contact.html }

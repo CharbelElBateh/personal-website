@@ -1,0 +1,35 @@
+# About page. Markup: *gold italic*  **bold**  [link](page.html)
+
+title: About — Charbel Al Bateh
+description: Charbel Al Bateh, AI engineer and researcher, and Computer Engineering student at the Lebanese American University.
+
+hero:
+  eyebrow: About
+  title: ["An AI engineer", "with a *long memory*."]
+  sub: I build learning systems by day, and keep a commonplace book of beautiful ideas by night. Below is the short version.
+  caption: The short version
+  stage: { preset: about, seed: 13 }
+
+# Path to a photo in public/ (e.g. assets/portrait.jpg). Leave null for no portrait.
+portrait: null
+portraitAlt: Portrait of Charbel Al Bateh
+
+facts:
+  - { k: Based,     v: Beirut · Remote-friendly }
+  - { k: Tools,     v: Python · PySpark · Verilog }
+  - { k: Reading,   v: Hadot · Calvino · Grothendieck }
+  - { k: Currently, v: AI Engineer at INMIND.AI }
+  - { k: Studying,  v: "BE Computer Engineering, LAU" }
+  - { k: Community, v: IEEE Student Branch Chair }
+
+bio:
+  lede: "I'm *Charbel Al Bateh* — an AI engineer and researcher, and a Computer Engineering student at the Lebanese American University, working across machine learning, LLM reasoning and quantum machine learning."
+  paragraphs:
+    - "Most of my time goes into two kinds of craft: shipping systems that hold up under real traffic, and writing up the small, reusable ideas that made them possible. I like systems that are small, legible, and honest about what they do not know."
+    - Before INMIND.AI I built 3D point-cloud pipelines and synthetic-data augmentation in BMW Group's R&D, and shipped software at Invigo, MERAKI and Galactech.io. I assist in the microelectronics and digital-testing labs at LAU, and chair the IEEE Student Branch.
+
+# Doors to the other pages (uses each page's `blurb` from site.yaml; disabled pages are skipped)
+elsewhere:
+  show: true
+  title: Elsewhere
+  pages: [work, publications, projects, curiosities]

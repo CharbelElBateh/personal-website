@@ -5,5 +5,36 @@
       "maxFindings": 5,
       "maxChars": 8000
     }
+  },
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-10-07T01:22:47.311Z",
+        "reason": "DESIGN.md typography: Inter is the documented body face, paired with Cormorant display"
+      },
+      {
+        "rule": "italic-serif-display",
+        "value": "*",
+        "files": [
+          "src/pages/contact.astro",
+          "src/components/PageHero.astro"
+        ],
+        "createdAt": "2026-10-07T01:22:47.416Z",
+        "reason": "DESIGN.md Gold Emphasis Rule: one gold italic em per Cormorant line is the documented system"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/pages/index.astro"
+        ],
+        "createdAt": "2026-10-07T05:14:49.901224Z",
+        "reason": "Recent-card <img data-still> has no src by design: boot.js renders a 3D still into it when it scrolls into view"
+      }
+    ]
   }
 }

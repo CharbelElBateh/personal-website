@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Card from "../components/curio/Card.astro";
+import Quote from "../components/curio/Quote.astro";
+import { curiosities } from "../lib/content";
+// Edit content/curiosities.yaml. To add a template: a new `kind` in src/lib/content.ts,
+// a component in src/components/curio/, and a line in the switch below.
+
+let n = 0;
+---
+<Base title={curiosities.title} description={curiosities.description} pageKey="curiosities">
+  <PageHero pageKey="curiosities" hero={curiosities.hero} />
+  <section class="section">
+    <div class="wrap">
+      <div class="curio-grid">
+        {curiosities.items.map((item) => {
+          switch (item.kind) {
+            case "quote": return <Quote item={item} />;
+            default: return <Card item={item} n={++n} />;
+          }
+        })}
+      </div>
+    </div>
+  </section>
+</Base>
