@@ -8,6 +8,8 @@ import { fileURLToPath } from "node:url";
 const dist = fileURLToPath(new URL("../dist/", import.meta.url));
 if (!existsSync(dist)) { console.error("No dist/ folder. Run `npm run build` first."); process.exit(1); }
 const external = process.argv.includes("--external");
+// Builds for a GitHub Pages project site prefix root links with /<repo>/ (see astro.config.mjs).
+const base = (process.env.BASE_PATH || "").replace(/\/+$/, "");
 
 const pages = readdirSync(dist).filter((f) => f.endsWith(".html"));
 const html = Object.fromEntries(pages.map((p) => [p, readFileSync(join(dist, p), "utf8")]));
@@ -25,7 +27,9 @@ for (const page of pages) {
     if (/^(mailto:|tel:|data:|javascript:)/.test(url)) continue;
     if (/^https?:\/\//.test(url)) { if (!outside.has(url)) outside.set(url, new Set()); outside.get(url).add(page); continue; }
     const [pathAndQuery, hash] = url.split("#");
-    const path = pathAndQuery.split("?")[0].replace(/^\.?\//, "");
+    let path = pathAndQuery.split("?")[0];
+    if (base && path.startsWith(`${base}/`)) path = path.slice(base.length);
+    path = path.replace(/^\.?\//, "");
     const target = path === "" ? page : path;
     if (!existsSync(join(dist, target))) { problems.push(`${page}: ${tag} → ${url} (no such file)`); continue; }
     if (hash && target.endsWith(".html") && !ids[target]?.has(hash)) problems.push(`${page}: ${url} (no element with id "${hash}")`);

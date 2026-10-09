@@ -48,7 +48,7 @@ const importMap = JSON.stringify({ imports: { three: `./vendor/three/three.modul
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-{rooted && <base href={import.meta.env.BASE_URL} />}
+{rooted && <base href={import.meta.env.BASE_URL.replace(/\/?$/, "/")} />}
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="viewport" content="width=device-width, initial-scale=1" />

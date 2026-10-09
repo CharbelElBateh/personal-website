@@ -63,6 +63,9 @@ function site() {
 }
 
 export default defineConfig({
+  // GitHub Pages serves a project repo under /<repo>/; the deploy workflow passes that prefix.
+  // A custom domain (or local builds) leaves it at the root.
+  base: process.env.BASE_PATH || "/",
   // Keep the existing addresses: work.html, publishings.html, …
   build: { format: "file", inlineStylesheets: "auto" },
   integrations: [site()],
